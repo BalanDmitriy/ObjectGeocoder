@@ -13,8 +13,7 @@ class ForwardGeocoder():
         json_data = data.json()
         coordinates.append(json_data["items"][0]["position"]["lat"])
         coordinates.append(json_data["items"][0]["position"]["lng"])
-        return print(coordinates)
-
+        return coordinates
 
     def geocode(self, adress_line: str):
         params = {
@@ -22,6 +21,6 @@ class ForwardGeocoder():
             "apiKey": self.apiKey  
         }
         respond = requests.get(self.base_url, params=params)
-        self.parser(respond)
-        # return print(respond.text)
+        result = self.parser(respond)
+        return result
 
